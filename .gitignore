@@ -1,0 +1,32 @@
+# Maven build folder
+target/
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Eclipse files
+.metadata
+.settings/
+.project
+.classpath
+
+# IntelliJ files (optional if someone opens project in IntelliJ)
+.idea/
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+
+# Test reports
+test-output/
+
+# Maven wrapper (optional)
+.mvn/wrapper/maven-wrapper.jar
