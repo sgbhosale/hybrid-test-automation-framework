@@ -29,7 +29,8 @@ public class TestListener implements ITestListener, ISuiteListener{
 
 	@Override
 	public void onStart(ISuite suite) {
-		ExtentSparkReporter spark = new ExtentSparkReporter(new File("Test_Execution_Report_"+setDateTime() + ".html"));
+		   String reportPath = System.getProperty("user.dir") + "/reports/index.html";
+		    ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
 		spark.config().setReportName("Test_Execution_Report_"+suite.getName());
 		extent.attachReporter(spark);
 		// Add environment/system details
