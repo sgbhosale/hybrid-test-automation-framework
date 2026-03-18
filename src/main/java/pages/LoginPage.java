@@ -22,6 +22,7 @@ public class LoginPage {
 	private WebElement submit;
 	
 
+	
 	public void enterUserName(String text) {
 		userName.sendKeys(text);
 	}	
