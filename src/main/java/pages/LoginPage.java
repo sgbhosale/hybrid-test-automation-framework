@@ -23,7 +23,9 @@ public class LoginPage {
 	
 	
 
-	
+	public void enterText() {
+		
+	}
 	
 	
 	public void enterUserName(String text) {
