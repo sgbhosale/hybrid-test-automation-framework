@@ -21,7 +21,6 @@ public class LoginPage {
 	@FindBy(css="button[type='submit']")
 	private WebElement submit;
 	
-
 	
 	public void enterUserName(String text) {
 		userName.sendKeys(text);
