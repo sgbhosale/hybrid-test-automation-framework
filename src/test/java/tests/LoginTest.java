@@ -22,8 +22,7 @@ public class LoginTest extends UiTestBase{
 	public void verifyText() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
-	//	loginPage.enterText("admin123");
-		loginPage.click();
+		loginPage.enterUserPass("admin123");		
 		Thread.sleep(10000);
 	}	
 }

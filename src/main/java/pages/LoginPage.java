@@ -12,11 +12,11 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(css="input[name='username']")
+	@FindBy(css="input[name='email']")
 	 WebElement userName;
 	
-	@FindBy(css="input[name='password']")
-	private WebElement pass;
+	@FindBy(css="input[name='pass']")
+	private WebElement password;
 	
 	@FindBy(css="button[type='submit']")
 	private WebElement submit;
@@ -28,18 +28,14 @@ public class LoginPage {
 	
 	public void enterUserName(String text) {
 		userName.sendKeys(text);
-	}
+	}	
 	
-	public void enterPass(String text) {
-		pass.sendKeys(text);
-	}
 	public void click() {
 		submit.click();
 	}
-
 	
-	public void enterUser(String text) {
+	public void enterUserPass(String text) {
 		
-		pass.sendKeys(text);
+		password.sendKeys(text);
 	}
 }
