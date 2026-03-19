@@ -19,8 +19,8 @@ public class LoginTest extends UiTestBase{
 	}
 
 	
-	@Test(description="QUAL-2")
-	public void verifyText() throws InterruptedException {
+	@Test(description="QUAL-36 : Add user to cartlist")
+	public void addUserFunctionality() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
 		loginPage.enterUserPass("admin123");		
