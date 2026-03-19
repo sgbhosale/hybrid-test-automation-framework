@@ -19,8 +19,7 @@ public class LoginTest extends UiTestBase{
 	}
 
 	
-	@Test(description="Login Test case",testName = "QUAL-2")
-	@XrayTest(key = "QUAL-2")
+	@Test(description="QUAL-2")
 	public void verifyText() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
