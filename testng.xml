@@ -3,6 +3,7 @@
 <suite name="Test Execution" parallel="none" thread-count="2">
 	<listeners>
 		<listener class-name="listeners.TestListener"></listener>
+		    <listener class-name="listeners.XrayReporter"/>
 	</listeners>
 	
 	<test  name="Sanity Test on Chrome" >

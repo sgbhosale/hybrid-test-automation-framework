@@ -119,6 +119,7 @@ public class TestListener implements ITestListener, ISuiteListener{
 		childTest.get().pass("Test Passed: " + result.getMethod().getMethodName());
 		childTest.remove();
 		setXrayKey(result);
+		
 	}
 
 	@Override
