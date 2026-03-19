@@ -12,4 +12,8 @@ public class CustomAnnotation {
 	public @interface Author {
 	    String value();
 	}
+	
+	public @interface XrayTest {
+	    String key();  // Xray Test Case ID
+	}
 }
