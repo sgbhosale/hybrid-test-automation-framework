@@ -18,6 +18,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import base.DriverManager;
 import utils.CustomAnnotation.Author;
+import utils.CustomAnnotation.XrayTest;
 import utils.ScreenShotUtils;
 
 public class TestListener implements ITestListener, ISuiteListener{
@@ -117,6 +118,7 @@ public class TestListener implements ITestListener, ISuiteListener{
 	public void onTestSuccess(ITestResult result) {
 		childTest.get().pass("Test Passed: " + result.getMethod().getMethodName());
 		childTest.remove();
+		setXrayKey(result);
 	}
 
 	@Override
@@ -124,12 +126,14 @@ public class TestListener implements ITestListener, ISuiteListener{
 		String screenshotPath = sc.captureScreenshot(DriverManager.getDriver(), result.getMethod().getMethodName());
 		childTest.get().fail("Test failed: " + result.getThrowable()).addScreenCaptureFromPath(screenshotPath);
 		childTest.remove();
+		setXrayKey(result);
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
 		childTest.get().skip("Test skipped: " + result.getMethod().getMethodName());
 		childTest.remove();
+		setXrayKey(result);
 	}
 
 	public String setDateTime() {
@@ -137,5 +141,16 @@ public class TestListener implements ITestListener, ISuiteListener{
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd_MM_yyyy_HH_mm_ss");
 		return now.format(formatter);
 	}
+	
+	 private void setXrayKey(ITestResult result) {
+	        XrayTest annotation = result.getMethod()
+	            .getConstructorOrMethod()
+	            .getMethod()
+	            .getAnnotation(XrayTest.class);
+
+	        if (annotation != null) {
+	            result.setAttribute("test_key", annotation.key());
+	        }
+	    }
 }
 
