@@ -19,7 +19,7 @@ public class LoginTest extends UiTestBase{
 	}
 
 	
-	@Test(description="QUAL-3")
+	@Test(testName="QUAL-3")
 	public void addUser() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
