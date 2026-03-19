@@ -19,7 +19,7 @@ public class LoginTest extends UiTestBase{
 	}
 
 	
-	@Test(description="QUAL-36 : Add user to cartlist")
+	@Test(description="QUAL-36: Add user to cartlist")
 	public void addUserFunctionality() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
