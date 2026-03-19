@@ -7,6 +7,7 @@ import org.testng.asserts.SoftAssert;
 import base.DriverManager;
 import base.UiTestBase;
 import pages.LoginPage;
+import utils.CustomAnnotation.XrayTest;
 
 public class LoginTest extends UiTestBase{
 
@@ -18,7 +19,8 @@ public class LoginTest extends UiTestBase{
 	}
 
 	
-	@Test
+	@Test(description="Login Test case")
+	@XrayTest(key = "QUAL-2")
 	public void verifyText() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
