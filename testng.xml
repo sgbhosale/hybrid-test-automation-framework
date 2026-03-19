@@ -2,8 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Test Execution" parallel="none" thread-count="2">
 	<listeners>
-		<listener class-name="listeners.TestListener"></listener>
-		    <listener class-name="listeners.XrayReporter"/>
+		<listener class-name="listeners.TestListener"></listener>		    
 	</listeners>
 	
 	<test  name="Sanity Test on Chrome" >
