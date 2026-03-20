@@ -50,12 +50,12 @@ public class XrayListener implements ITestListener {
 
 	    @Override
 	    public void onTestSuccess(ITestResult result) {
-	        captureResult(result, "PASS");
+	        captureResult(result, "PASSED");
 	    }
 
 	    @Override
 	    public void onTestFailure(ITestResult result) {
-	        captureResult(result, "FAIL");
+	        captureResult(result, "FAILED");
 	    }
 
 	    @Override
