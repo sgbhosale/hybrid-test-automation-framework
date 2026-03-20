@@ -1,6 +1,7 @@
 package listeners;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
@@ -112,6 +113,19 @@ public class TestListener implements ITestListener, ISuiteListener{
 
 		childTest.set(child);
 		childTest.get().info("Starting test: " + result.getMethod().getMethodName());
+		
+		 Method method = result.getMethod().getConstructorOrMethod().getMethod();
+		if (method.isAnnotationPresent(XrayTest.class)) {
+            XrayTest xrayTest = method.getAnnotation(XrayTest.class);
+
+            String testKey = xrayTest.key();
+
+            // Inject into TestNG description (this goes into XML)
+            result.getMethod().setDescription(testKey);
+
+            // Optional: log for debugging
+            System.out.println("Mapped Xray Test Key: " + testKey);
+        }
 	}
 
 	@Override
