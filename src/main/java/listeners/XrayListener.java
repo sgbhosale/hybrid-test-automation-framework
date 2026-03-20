@@ -14,11 +14,16 @@ public class XrayListener implements ITestListener {
 	        public String testKey;
 	        public String status;
 	        public String comment;
+	        public String start;
+	        public String finish;
 
 	        public TestResultData(String testKey, String status, String comment) {
 	            this.testKey = testKey;
 	            this.status = status;
 	            this.comment = comment;
+	            String now = java.time.OffsetDateTime.now().toString();
+	            this.start = now;
+	            this.finish = now;
 	        }
 	    }
 
