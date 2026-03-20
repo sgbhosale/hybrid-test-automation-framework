@@ -122,7 +122,7 @@ public class TestListener implements ITestListener, ISuiteListener{
 		        String testKey = xrayTest.key();
 
 		        // Set description
-		        result.getMethod().setDescription(testKey);
+		        result.setTestName(testKey);
 
 		        // Force attribute (backup)
 		        result.setAttribute("testKey", testKey);
