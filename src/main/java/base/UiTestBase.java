@@ -8,9 +8,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+
+import utils.XrayJsonGenerator;
 
 public class UiTestBase {
 
@@ -39,4 +42,8 @@ public class UiTestBase {
 		DriverManager.getDriver().quit();
 		DriverManager.unload();;
 	}
+	@AfterSuite
+	public void generateReport() {
+        XrayJsonGenerator.generateJson();
+    }
 }

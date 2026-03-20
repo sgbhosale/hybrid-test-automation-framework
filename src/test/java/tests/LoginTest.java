@@ -25,7 +25,7 @@ public class LoginTest extends UiTestBase{
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
 		loginPage.enterUserPass("admin123");		
-		Thread.sleep(10000);
+		Thread.sleep(1000);
 	}	
 	
 	@Test
@@ -34,6 +34,6 @@ public class LoginTest extends UiTestBase{
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
 		loginPage.enterUserPass("admin123");		
-		Thread.sleep(10000);
+		Thread.sleep(1000);
 	}	
 }

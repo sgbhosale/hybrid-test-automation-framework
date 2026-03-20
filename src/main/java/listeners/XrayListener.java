@@ -1,6 +1,8 @@
 package listeners;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -8,21 +10,51 @@ import org.testng.ITestResult;
 import utils.CustomAnnotation.XrayTest;
 
 public class XrayListener implements ITestListener {
+	   public static class TestResultData {
+	        public String testKey;
+	        public String status;
+	        public String comment;
 
-    @Override
-    public void onTestStart(ITestResult result) {
-        Method method = result.getMethod().getConstructorOrMethod().getMethod();
+	        public TestResultData(String testKey, String status, String comment) {
+	            this.testKey = testKey;
+	            this.status = status;
+	            this.comment = comment;
+	        }
+	    }
 
-        if (method.isAnnotationPresent(XrayTest.class)) {
-            XrayTest xrayTest = method.getAnnotation(XrayTest.class);
+	    public static List<TestResultData> results = new ArrayList<>();
 
-            String testKey = xrayTest.key();
+	    private void captureResult(ITestResult result, String status) {
+	        Method method = result.getMethod().getConstructorOrMethod().getMethod();
 
-            // Inject into TestNG description (this goes into XML)
-            result.getMethod().setDescription(testKey);
+	        if (method.isAnnotationPresent(XrayTest.class)) {
 
-            // Optional: log for debugging
-            System.out.println("Mapped Xray Test Key: " + testKey);
-        }
-    }
+	            String key = method.getAnnotation(XrayTest.class).key();
+
+	            String comment = (result.getThrowable() != null)
+	                    ? result.getThrowable().getMessage()
+	                    : "Executed successfully";
+
+	            results.add(new TestResultData(key, status, comment));
+
+	            System.out.println("✅ Captured: " + key + " → " + status);
+	        } else {
+	            System.out.println("⚠ No XrayTest annotation on: " + method.getName());
+	        }
+	    }
+
+	    @Override
+	    public void onTestSuccess(ITestResult result) {
+	        captureResult(result, "PASS");
+	    }
+
+	    @Override
+	    public void onTestFailure(ITestResult result) {
+	        captureResult(result, "FAIL");
+	    }
+
+	    @Override
+	    public void onTestSkipped(ITestResult result) {
+	        captureResult(result, "SKIPPED");
+	    }
 }

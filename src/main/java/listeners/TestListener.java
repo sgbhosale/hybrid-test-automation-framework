@@ -112,28 +112,14 @@ public class TestListener implements ITestListener, ISuiteListener{
 	    }
 
 		childTest.set(child);
-		childTest.get().info("Starting test: " + result.getMethod().getMethodName());
-		
-		  Method method = result.getMethod().getConstructorOrMethod().getMethod();
-
-		    if (method.isAnnotationPresent(XrayTest.class)) {
-		        XrayTest xrayTest = method.getAnnotation(XrayTest.class);
-
-		        String testKey = xrayTest.key();
-
-		        // Set description
-		        result.setTestName(testKey);
-
-		        // Force attribute (backup)
-		        result.setAttribute("testKey", testKey);
-		    }
+		childTest.get().info("Starting test: " + result.getMethod().getMethodName());		
+		 
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
 		childTest.get().pass("Test Passed: " + result.getMethod().getMethodName());
-		childTest.remove();
-		setXrayKey(result);
+		childTest.remove();	
 		
 	}
 
@@ -142,14 +128,14 @@ public class TestListener implements ITestListener, ISuiteListener{
 		String screenshotPath = sc.captureScreenshot(DriverManager.getDriver(), result.getMethod().getMethodName());
 		childTest.get().fail("Test failed: " + result.getThrowable()).addScreenCaptureFromPath(screenshotPath);
 		childTest.remove();
-		setXrayKey(result);
+	
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
 		childTest.get().skip("Test skipped: " + result.getMethod().getMethodName());
 		childTest.remove();
-		setXrayKey(result);
+		
 	}
 
 	public String setDateTime() {
