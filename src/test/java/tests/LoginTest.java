@@ -21,7 +21,7 @@ public class LoginTest extends UiTestBase{
 	
 	@Test
 	@XrayTest(key= "QUAL-4")
-	public void addUser() throws InterruptedException {
+	public void test4() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
 		loginPage.enterUserPass("admin123");		
@@ -30,7 +30,7 @@ public class LoginTest extends UiTestBase{
 	
 	@Test
 	@XrayTest(key= "QUAL-3")
-	public void addgroup() throws InterruptedException {
+	public void test3() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
 		loginPage.enterUserPass("admin123");		
