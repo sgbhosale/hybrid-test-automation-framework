@@ -13,6 +13,8 @@ public class CustomAnnotation {
 	    String value();
 	}
 	
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target(ElementType.METHOD)
 	public @interface XrayTest {
 	    String key();  // Xray Test Case ID
 	}
