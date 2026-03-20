@@ -63,10 +63,6 @@ public class XrayListener implements ITestListener {
 	    @Override
 	    public void onTestSkipped(ITestResult result) {
 	        captureResult(result, "SKIPPED");
-	    }
+	    }	    
 	    
-	    @AfterSuite
-		public void generateReport() {
-	        XrayJsonGenerator.generateJson();
-	    }
 }
