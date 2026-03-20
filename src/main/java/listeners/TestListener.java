@@ -114,18 +114,19 @@ public class TestListener implements ITestListener, ISuiteListener{
 		childTest.set(child);
 		childTest.get().info("Starting test: " + result.getMethod().getMethodName());
 		
-		 Method method = result.getMethod().getConstructorOrMethod().getMethod();
-		if (method.isAnnotationPresent(XrayTest.class)) {
-            XrayTest xrayTest = method.getAnnotation(XrayTest.class);
+		  Method method = result.getMethod().getConstructorOrMethod().getMethod();
 
-            String testKey = xrayTest.key();
+		    if (method.isAnnotationPresent(XrayTest.class)) {
+		        XrayTest xrayTest = method.getAnnotation(XrayTest.class);
 
-            // Inject into TestNG description (this goes into XML)
-            result.getMethod().setDescription(testKey);
+		        String testKey = xrayTest.key();
 
-            // Optional: log for debugging
-            System.out.println("Mapped Xray Test Key: " + testKey);
-        }
+		        // Set description
+		        result.getMethod().setDescription(testKey);
+
+		        // Force attribute (backup)
+		        result.setAttribute("testKey", testKey);
+		    }
 	}
 
 	@Override
