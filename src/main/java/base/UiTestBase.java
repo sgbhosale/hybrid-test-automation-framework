@@ -42,8 +42,5 @@ public class UiTestBase {
 		DriverManager.getDriver().quit();
 		DriverManager.unload();;
 	}
-	@AfterSuite
-	public void generateReport() {
-        XrayJsonGenerator.generateJson();
-    }
+	
 }

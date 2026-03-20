@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterSuite;
 
+import utils.XrayJsonGenerator;
 import utils.CustomAnnotation.XrayTest;
 
 public class XrayListener implements ITestListener {
@@ -61,5 +63,10 @@ public class XrayListener implements ITestListener {
 	    @Override
 	    public void onTestSkipped(ITestResult result) {
 	        captureResult(result, "SKIPPED");
+	    }
+	    
+	    @AfterSuite
+		public void generateReport() {
+	        XrayJsonGenerator.generateJson();
 	    }
 }
