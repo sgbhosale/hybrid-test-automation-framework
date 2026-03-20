@@ -19,7 +19,8 @@ public class LoginTest extends UiTestBase{
 	}
 
 	
-	@Test(description= "QUAL-3")
+	@Test
+	@XrayTest(key= "QUAL-4")
 	public void addUser() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
@@ -27,7 +28,8 @@ public class LoginTest extends UiTestBase{
 		Thread.sleep(10000);
 	}	
 	
-	@Test(description= "QUAL-4")
+	@Test
+	@XrayTest(key= "QUAL-3")
 	public void addgroup() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
 		loginPage.enterUserName("Admin");
