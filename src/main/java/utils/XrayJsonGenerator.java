@@ -21,15 +21,14 @@ public class XrayJsonGenerator {
             String browser = System.getProperty("browser", "chrome");
 
             // 🔥 Create dynamic execution name
-            String summary = "Execution - Build " + build + " - " + suite + " - " + browser;
+            String summary = "Automation Execution - Build " + build + " - " + suite + " - " + browser;
 
             // =========================
             // INFO BLOCK (IMPORTANT)
             // =========================
             Map<String, Object> info = new HashMap<>();
             info.put("summary", summary);
-            info.put("description", "Triggered from Jenkins automation");
-            info.put("version", "1.0");
+            info.put("description", "Triggered from Jenkins automation");           
 
             // =========================
             // MAIN PAYLOAD
