@@ -15,30 +15,25 @@ public class XrayJsonGenerator {
 		
         try {
 
-            // 🔥 Read values from Jenkins
+            //Read values from Jenkins
             String build = System.getProperty("BUILD_NUMBER", "LOCAL");
             String suite = System.getProperty("SUITE", "default-suite");
             String browser = System.getProperty("browser", "chrome");
 
-            // 🔥 Create dynamic execution name
+            //Create dynamic execution name
             String summary = "Automation Execution - Build " + build + " - " + suite + " - " + browser;
-
-            // =========================
-            // INFO BLOCK (IMPORTANT)
-            // =========================
+          
+            // INFO BLOCK (IMPORTANT)          
             Map<String, Object> info = new HashMap<>();
             info.put("summary", summary);
             info.put("description", "Triggered from Jenkins automation");           
 
-            // =========================
-            // MAIN PAYLOAD
-            // =========================
+            // MAIN PAYLOAD           
             Map<String, Object> payload = new HashMap<>();
-            payload.put("info", info);   // 👈 THIS IS KEY CHANGE
-            // Wrap results in "tests" key (Xray expects this)
-           
+            payload.put("info", info); 
+            
+            // Wrap results in "tests" key (Xray expects this)           
             payload.put("tests", XrayListener.results);
-
             ObjectMapper mapper = new ObjectMapper();
 
             // Create file in target folder
