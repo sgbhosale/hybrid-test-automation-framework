@@ -3,37 +3,27 @@ package tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
 import base.DriverManager;
 import base.UiTestBase;
-import pages.LoginPage;
+import pages.HomePage;
 import utils.CustomAnnotation.XrayTest;
 
 public class LoginTest extends UiTestBase{
 
-	private LoginPage loginPage;
+	 private HomePage homePage;
 	
 	@BeforeMethod
 	public void initPageObject() {
-		loginPage=new LoginPage(DriverManager.getDriver());
+		homePage=new HomePage(DriverManager.getDriver());
 	}
-
 	
 	@Test
 	@XrayTest(key= "QUAL-4")
 	public void test4() throws InterruptedException {
 		SoftAssert softAssert=new SoftAssert();	
-		loginPage.enterUserName("Admin");
-		loginPage.enterUserPass("admin123");		
-		Thread.sleep(1000);
+		homePage.clickCustomerLogin();
+	
 	}	
 	
-	@Test
-	@XrayTest(key= "QUAL-3")
-	public void test3() throws InterruptedException {
-		SoftAssert softAssert=new SoftAssert();	
-		loginPage.enterUserName("Admin");
-		loginPage.enterUserPass("admin123");		
-		Thread.sleep(1000);
-	}	
+	
 }

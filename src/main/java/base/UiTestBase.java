@@ -33,7 +33,7 @@ public class UiTestBase {
 		}
 		DriverManager.getDriver().manage().window().maximize();
 		DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
-		DriverManager.getDriver().get("https://facebook.com");	
+		DriverManager.getDriver().get("https://www.globalsqa.com/angularJs-protractor/BankingProject");	
 	}	
 	
 	
